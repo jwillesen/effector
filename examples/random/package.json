@@ -1,0 +1,11 @@
+{
+  "name": "random-example",
+  "version": "1.0.0",
+  "description": "Example usage for effector",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Jon Willesenn",
+  "license": "ISC"
+}

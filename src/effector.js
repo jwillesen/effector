@@ -1,43 +1,50 @@
-import Effects from './effects'
+import {createCallEffect} from './utils'
 
-function composeMiddleware (nextMiddleware, currentMiddleware) {
+function chainMiddleware (nextMiddleware, currentMiddleware) {
   return (effect) => currentMiddleware(effect, nextMiddleware)
 }
 
-function composeMiddlewares (middlewares) {
-  return middlewares.reduceRight(composeMiddleware, terminalMiddleware)
+function composeMiddleware (middleware) {
+  return middleware.reduceRight(chainMiddleware, terminalMiddleware)
 }
 
 function terminalMiddleware (effect, next) {}
 
-function executeCallMiddleware (effectDescriptor, next) {
-  const {type, obj, fn, args} = effectDescriptor
-  if (type === 'CALL') return fn.call(obj, ...args)
-  return next(effectDescriptor)
+function executeCallEffect (effect, next) {
+  const {obj, fn, args} = effect
+  return fn.call(obj, ...args)
+}
+
+export function call (toInvoke, ...args) {
+  return Effector.instance.call(toInvoke, ...args)
+}
+
+export function apply (obj, fn, ...args) {
+  return Effector.instance.apply(obj, fn, ...args)
 }
 
 export class Effector {
-  constructor (middlewares = []) {
-    const defaultMiddleware = [
-      executeCallMiddleware,
-    ]
-    this.setMiddleware(middlewares.concat(defaultMiddleware))
-    this.createEffectHelpers(Effects)
+  static theInstance = null;
+
+  static get instance () {
+    if (this.theInstance == null) this.theInstance = new Effector()
+    return this.theInstance
   }
 
-  createEffectHelpers () {
-    Object.entries(Effects).forEach(([effectName, effectFn]) => {
-      this[effectName] = (...args) => this.dispatch(effectFn(...args))
-    })
+  static set instance (newInstance) {
+    this.theInstance = newInstance
   }
 
-  dispatch (effect) {
-    return this.composedMiddleware(effect)
+  constructor (middleware = []) {
+    this.middleware = composeMiddleware([...middleware, executeCallEffect])
   }
 
-  getMiddleware () { return this.middlewares.slice() }
-  setMiddleware (middlewares) {
-    this.middlewares = middlewares.slice()
-    this.composedMiddleware = composeMiddlewares(this.middlewares)
+  call (toInvoke, ...args) {
+    const effect = createCallEffect(toInvoke, args)
+    return this.middleware(effect)
+  }
+
+  apply (obj, fn, ...args) {
+    return this.call([obj, fn], ...args)
   }
 }

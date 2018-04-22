@@ -22,15 +22,7 @@ function destructureToInvoke (toInvoke) {
   }
 }
 
-export function call (toInvoke, ...args) {
+export function createCallEffect (toInvoke, ...args) {
   const [obj, fn] = destructureToInvoke(toInvoke)
   return {type: 'CALL', obj, fn, args}
-}
-
-export function apply (obj, fn, ...args) {
-  return call([obj, fn], ...args)
-}
-
-export default {
-  call, apply,
 }

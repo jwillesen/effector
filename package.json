@@ -17,17 +17,15 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.1",
-    "babel-jest": "^21.2.0",
-    "babel-plugin-transform-node-env-inline": "^0.2.0",
+    "babel-jest": "^22.2.2",
     "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-2": "^6.24.1",
     "eslint": "^4.9.0",
-    "eslint-config-standard": "^10.2.1",
+    "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
-    "jest": "^21.2.1"
+    "jest": "^22.3.0"
   },
   "dependencies": {
     "lodash": "^4.17.4"

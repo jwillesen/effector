@@ -1,1 +1,1 @@
-export call from './src/effects'
+export {call} from './src/effects'
