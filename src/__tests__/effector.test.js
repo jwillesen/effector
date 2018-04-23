@@ -3,8 +3,8 @@ import {Effector} from '../effector'
 describe('call effect', () => {
   it('calls the method with the specified parameters', () => {
     const fn = jest.fn()
-    new Effector().call(fn, 42)
-    expect(fn).toHaveBeenCalledWith(42)
+    new Effector().call(fn, 'arg1', 42)
+    expect(fn).toHaveBeenCalledWith('arg1', 42)
   })
 
   it('calls the method with the specified object', () => {
@@ -60,17 +60,16 @@ describe('middleware', () => {
     expect(fn).toHaveBeenCalled()
   })
 
-  it('invokes middlewares in order', () => {
+  it('invokes middleware in order', () => {
     const calls = []
     const makeMockMiddleware = id => (effect, next) => {
       calls.push(id)
       return next(effect)
     }
-    const effector = new Effector()
-    effector.setMiddleware([makeMockMiddleware('first'), makeMockMiddleware('second')])
+    const effector = new Effector([makeMockMiddleware('first'), makeMockMiddleware('second')])
     const fn = jest.fn()
-    effector.call(fn)
+    effector.call(fn, 'arg')
     expect(calls).toEqual(['first', 'second'])
-    expect(fn).not.toHaveBeenCalled()
+    expect(fn).toHaveBeenCalledWith('arg')
   })
 })

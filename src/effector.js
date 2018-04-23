@@ -24,7 +24,7 @@ export function apply (obj, fn, ...args) {
 }
 
 export class Effector {
-  static theInstance = null;
+  static theInstance = null
 
   static get instance () {
     if (this.theInstance == null) this.theInstance = new Effector()
@@ -40,7 +40,7 @@ export class Effector {
   }
 
   call (toInvoke, ...args) {
-    const effect = createCallEffect(toInvoke, args)
+    const effect = createCallEffect(toInvoke, ...args)
     return this.middleware(effect)
   }
 
