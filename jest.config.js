@@ -1,9 +1,10 @@
 module.exports = {
+  testMatch: ['<rootDir>/src/**/__tests__/**/*.test.js'],
   coverageReporters: [
     'html',
-    'text'
+    'text',
   ],
   collectCoverageFrom: [
-    'src/**/*.js'
-  ]
+    'src/**/*.js',
+  ],
 }

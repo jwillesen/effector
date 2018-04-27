@@ -16,14 +16,15 @@ export class TestEffectRegistry {
   mockedCalls = [] // array of objects: {effect: <a call effect>, mockFn: <provided mock fn>}
   mockCall (toInvoke, mockFn) {
     const effect = createCallEffect(toInvoke)
-    this.mockedCalls.push([effect, mockFn])
+    this.mockedCalls.push({effect, mockFn})
+    return mockFn
   }
 
   call (effect) {
     const mockedCall = this.findMockCallForEffect(effect)
     if (mockedCall == null) throw new Error('Tried to invoke an unmocked call')
-    if (typeof mockFn === 'function') {
-      return mockedCall.mockFn(...mockedCall.args)
+    if (typeof mockedCall.mockFn === 'function') {
+      return mockedCall.mockFn(...effect.args)
     } else {
       return mockedCall.mockFn
     }
@@ -44,7 +45,7 @@ export class TestEffectRegistry {
 
 export function createTestMiddleware (testEffectRegistry) {
   return function (effect, next) {
-    testEffectRegistry.call(effect)
+    return testEffectRegistry.call(effect)
     // purposefully not calling next because we don't want to actually invoke
     // these calls while testing. The provided mock function can invoke it if
     // desired.

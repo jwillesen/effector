@@ -1,5 +1,5 @@
 {
-  "name": "async-effects",
+  "name": "effector",
   "version": "1.0.0",
   "description": "decouple asynchronous operations from logic for easier testing",
   "main": "index.js",
@@ -15,7 +15,7 @@
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
+    "babel-core": "^6.26.2",
     "babel-eslint": "^8.2.3",
     "babel-jest": "^22.2.2",
     "babel-preset-env": "^1.6.1",
@@ -24,11 +24,11 @@
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-promise": "^3.7.0",
-    "eslint-plugin-standard": "^3.0.1",
+    "eslint-plugin-standard": "^3.1.0",
     "jest": "^22.3.0"
   },
   "dependencies": {
     "babel-preset-stage-2": "^6.24.1",
-    "lodash": "^4.17.5"
+    "lodash": "^4.17.10"
   }
 }
