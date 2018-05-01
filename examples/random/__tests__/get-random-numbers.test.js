@@ -1,11 +1,10 @@
-const {mockCall, effector} = require('effector/test')
-const {getRandomNumbers} = require('../index.js')
-const axios = require('axios')
+import {mockCall, useMockCalls, resetMockCalls} from 'effector/lib/test'
+import getRandomNumbers from '../get-random-numbers'
+import axios from 'axios'
 
-effector.useMockCalls()
-
+useMockCalls()
 afterEach(() => {
-  effector.resetMockCalls()
+  resetMockCalls()
 })
 
 it('fetches random numbers', async () => {

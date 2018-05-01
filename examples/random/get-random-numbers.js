@@ -1,5 +1,5 @@
 const axios = require('axios')
-const call = require('../../dist/effects').call
+const {call} = require('effector')
 
 async function getRandomNumbers () {
   const result = await call([axios, 'get'], 'https://random.org/integers', {
@@ -13,7 +13,8 @@ async function getRandomNumbers () {
       rnd: 'new',
     },
   })
-  console.log(result.data)
+  call(console.log, result.data)
+  return result.data
 }
 
 module.exports = getRandomNumbers

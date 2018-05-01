@@ -2,8 +2,13 @@
   "name": "effector",
   "version": "1.0.0",
   "description": "decouple asynchronous operations from logic for easier testing",
-  "main": "index.js",
+  "main": "lib/effector.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
+    "build": "babel src -d lib --ignore __tests__/**",
+    "build:watch": "npm run build -- --watch",
     "test": "jest"
   },
   "keywords": [

@@ -6,6 +6,9 @@
   "scripts": {
     "test": "jest"
   },
-  "author": "Jon Willesenn",
-  "license": "ISC"
+  "author": "Jon Willesen",
+  "license": "ISC",
+  "dependencies": {
+    "effector": "file:../.."
+  }
 }

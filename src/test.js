@@ -65,11 +65,3 @@ export function useMockCalls () {
 export function resetMockCalls () {
   TestEffectRegistry.instance.reset()
 }
-
-export const effector = {
-  mockCall,
-  useMockCalls,
-  resetMockCalls,
-}
-
-export default effector

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fetches random numbers 1`] = `
+Object {
+  "params": Object {
+    "base": 10,
+    "col": 10,
+    "format": "plain",
+    "max": 100,
+    "min": 1,
+    "num": 100,
+    "rnd": "new",
+  },
+}
+`;
