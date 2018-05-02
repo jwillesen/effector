@@ -8,7 +8,13 @@
   },
   "author": "Jon Willesen",
   "license": "ISC",
+  "homepage": "https://github.com/jwillesen/effector",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jwillesen/effector.git"
+  },
   "dependencies": {
+    "axios": "^0.18.0",
     "effector": "file:../.."
   }
 }

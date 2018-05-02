@@ -18,12 +18,18 @@
   ],
   "author": "Jon Willesen",
   "license": "ISC",
+  "homepage": "https://github.com/jwillesen/effector",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jwillesen/effector.git"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.2",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
     "babel-jest": "^22.2.2",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.11.0",
@@ -32,8 +38,5 @@
     "eslint-plugin-standard": "^3.1.0",
     "jest": "^22.3.0"
   },
-  "dependencies": {
-    "babel-preset-stage-2": "^6.24.1",
-    "lodash": "^4.17.10"
-  }
+  "dependencies": {}
 }
